@@ -1,0 +1,84 @@
+<form>
+    <div class="user-input__title">
+      <p>Generate your Meta Tags!</p>
+    </div>
+  
+    <!-- Title and Language -->
+    <div class="input-group">
+      <p>
+        <input
+          class="user-input__typeTag"
+          id="Title"
+          name="Title"
+          type="text"
+          placeholder="Title"
+        />
+      </p>
+      <p>
+        <select
+          class="user-input__drop-tag"
+          id="Language"
+          name="Language"
+        >
+          <option value="" disabled selected>Select Language</option>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+          <!-- Add more languages as needed -->
+        </select>
+      </p>
+    </div>
+  
+    <!-- Description and Keywords -->
+    <div class="input-group">
+        <p>
+          <textarea
+            class="user-input__text-Tag"
+            id="Description"
+            name="Description"
+            placeholder="Description"
+            rows="4"
+            cols="30"
+          ></textarea>
+        </p>
+        <p>
+          <textarea
+            class="user-input__text-Tag"
+            id="Keywords"
+            name="Keywords"
+            placeholder="Keywords"
+            rows="4"
+            cols="30"
+          ></textarea>
+        </p>
+      </div>
+      
+  
+    <!-- Charset and Author -->
+    <div class="input-group">
+      <p>
+        <select
+          class="user-input__drop-tag"
+          id="Charset"
+          name="Charset"
+        >
+          <option value="" disabled selected>Select Charset</option>
+          <option value="UTF-8">UTF-8</option>
+          <option value="ISO-8859-1">ISO-8859-1</option>
+          <option value="ASCII">ASCII</option>
+          <!-- Add more charsets as needed -->
+        </select>
+      </p>
+      <p>
+        <input
+          class="user-input__typeTag"
+          id="Author"
+          name="Author"
+          type="text"
+          placeholder="Author"
+        />
+      </p>
+    </div>
+  </form>
+  
