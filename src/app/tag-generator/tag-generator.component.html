@@ -1,8 +1,4 @@
 <div>
-    <button (click)="generateTags()">Generate Meta Tags</button>
-    <div *ngIf="generatedTags().length">
-      <h3>Generated Meta Tags:</h3>
-      <pre>{{ generatedTags().join('\n') }}</pre>
-      <div>{{ generatedTags().join('\n') }}</div>
-    </div>
-  </div>
+  <button type="button" (click)="generateTags()">Generate Meta Tags</button>
+  <app-code-block *ngIf="generatedTagsString()" [code]="generatedTagsString()" language="html"></app-code-block>
+</div>

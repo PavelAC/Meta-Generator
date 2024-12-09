@@ -1,24 +1,26 @@
-import { Component, Input, computed } from '@angular/core';
+import { Component, Input, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CodeBlockComponent } from '../code-block/code-block.component';
 
 @Component({
   selector: 'app-tag-generator',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CodeBlockComponent],
   templateUrl: './tag-generator.component.html',
-  styleUrl: './tag-generator.component.css'
+  styleUrls: ['./tag-generator.component.css']
 })
 export class TagGeneratorComponent {
   @Input() formData!: () => any; // Signal for form data
   @Input() socialLinks!: () => any[]; // Signal for social platform data
 
-  // Computed signal to generate meta tags
   generatedTags = computed(() => {
     const tags = [];
     const formData = this.formData();
     const socialLinks = this.socialLinks();
 
     // Basic meta tags
+    tags.push(`<title>${formData.title}</title>`);
+    tags.push(`<meta name="viewport" content="width=device-width, initial-scale=1.0">`);
     tags.push(`<meta charset="${formData.charset}">`);
     tags.push(`<meta name="author" content="${formData.author}">`);
     tags.push(`<meta name="description" content="${formData.description}">`);
@@ -31,10 +33,13 @@ export class TagGeneratorComponent {
       tags.push(`<meta name="${platform.name.toLowerCase()}:image" content="${platform.fields.image}">`);
     });
 
-    return tags;
+    return tags.join('\n');
   });
 
-  generateTags(): void {
-    console.log('Generated Meta Tags:', this.generatedTags());
+  generatedTagsString = signal('');
+
+  generateTags() {
+    this.generatedTagsString.set(this.generatedTags());
+    console.log("button pressed")
   }
 }

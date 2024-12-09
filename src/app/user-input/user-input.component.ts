@@ -14,7 +14,7 @@ import { TagGeneratorComponent } from '../tag-generator/tag-generator.component'
 export class UserInputComponent {
   formData = signal({
     title: '',
-    language: '',
+    // language: '',
     description: '',
     keywords: '',
     charset: '',
