@@ -1,0 +1,8 @@
+<div>
+    <button (click)="generateTags()">Generate Meta Tags</button>
+    <div *ngIf="generatedTags().length">
+      <h3>Generated Meta Tags:</h3>
+      <pre>{{ generatedTags().join('\n') }}</pre>
+      <div>{{ generatedTags().join('\n') }}</div>
+    </div>
+  </div>

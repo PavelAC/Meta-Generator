@@ -1,0 +1,39 @@
+<h3>Select Social Platforms</h3>
+<div *ngFor="let platform of socialPlatforms()">
+  <div>
+    <label>
+      <input
+        type="checkbox"
+        [checked]="platform.selected"
+        (change)="togglePlatform(platform.name)"
+      />
+      {{ platform.name }}
+    </label>
+    <div *ngIf="platform.selected" class="platform-fields">
+      <h4>{{ platform.name }} Fields</h4>
+      <label>
+        Title:
+        <input
+          type="text"
+          [(ngModel)]="platform.fields.title"
+          placeholder="Enter title for {{ platform.name }}"
+        />
+      </label>
+      <label>
+        Description:
+        <textarea
+          [(ngModel)]="platform.fields.description"
+          placeholder="Enter description for {{ platform.name }}"
+        ></textarea>
+      </label>
+      <label>
+        Image URL:
+        <input
+          type="text"
+          [(ngModel)]="platform.fields.image"
+          placeholder="Enter image URL for {{ platform.name }}"
+        />
+      </label>
+    </div>
+  </div>
+</div>

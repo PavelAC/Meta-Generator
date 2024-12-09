@@ -1,4 +1,10 @@
 header{
     display: flex;
     place-content: center;
+    margin: 1.5rem auto;
+}
+
+header p {
+    color: black;
+    font-weight: 600;
 }
