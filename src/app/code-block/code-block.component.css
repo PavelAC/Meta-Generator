@@ -1,6 +1,5 @@
 .code-block-container {
     position: relative;
- 
   }
   
   button {
@@ -16,9 +15,10 @@
   
   pre {
     padding: 10px;
-    background-color: #f5f5f5;
+    color: #f5f5f5;
+    background-color: #333333;
     border-radius: 5px;
-    overflow-x: auto;
+    width: 45rem;
   }
   
   code {
@@ -28,7 +28,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f5f5f5;
     padding: 20px;
     border-radius: 15px;
     width: 400px;

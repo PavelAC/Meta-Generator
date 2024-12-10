@@ -28,9 +28,15 @@ export class TagGeneratorComponent {
 
     // Social platform-specific meta tags
     socialLinks.forEach(platform => {
-      tags.push(`<meta name="${platform.name.toLowerCase()}:title" content="${platform.fields.title}">`);
-      tags.push(`<meta name="${platform.name.toLowerCase()}:description" content="${platform.fields.description}">`);
-      tags.push(`<meta name="${platform.name.toLowerCase()}:image" content="${platform.fields.image}">`);
+      if (platform.name === 'Facebook') {
+        tags.push(`<meta property="og:title" content="${platform.fields.title}">`);
+        tags.push(`<meta property="og:description" content="${platform.fields.description}">`);
+        tags.push(`<meta property="og:image" content="${platform.fields.image}">`);
+      } else {
+        tags.push(`<meta name="${platform.name.toLowerCase()}:title" content="${platform.fields.title}">`);
+        tags.push(`<meta name="${platform.name.toLowerCase()}:description" content="${platform.fields.description}">`);
+        tags.push(`<meta name="${platform.name.toLowerCase()}:image" content="${platform.fields.image}">`);
+      }
     });
 
     return tags.join('\n');

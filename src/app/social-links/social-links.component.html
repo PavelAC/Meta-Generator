@@ -2,7 +2,7 @@
 <div *ngFor="let platform of socialPlatforms()">
   <div>
     <label>
-      <input
+      <input class="checkbox"
         type="checkbox"
         [checked]="platform.selected"
         (change)="togglePlatform(platform.name)"
@@ -13,7 +13,7 @@
       <h4>{{ platform.name }} Fields</h4>
       <label>
         Title:
-        <input
+        <input class="input"
           type="text"
           [(ngModel)]="platform.fields.title"
           placeholder="Enter title for {{ platform.name }}"
@@ -28,7 +28,7 @@
       </label>
       <label>
         Image URL:
-        <input
+        <input class="input"
           type="text"
           [(ngModel)]="platform.fields.image"
           placeholder="Enter image URL for {{ platform.name }}"

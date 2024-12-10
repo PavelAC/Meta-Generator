@@ -1,28 +1,31 @@
-.platform-fields {
-    margin-left: 20px;
-    margin-top: 10px;
-    border-left: 2px solid #ddd;
-    padding-left: 10px;
+  h3{
+    color: black;
+    font-weight: 600;
+  }
+
+  div{
+    margin: 2.5rem auto;
+    color: black;
+    font-weight: 600;
   }
   
   label {
     display: block;
-    margin: 5px 0;
+    margin: 1.5rem 0;
   }
-  
-  input, textarea {
-    margin-top: 5px;
-    padding: 5px;
+  .input, textarea {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
     width: 100%;
     max-width: 400px;
   }
-  
-  textarea {
-    resize: none;
-    height: 80px;
+
+  .platform-fields {
+    border-left: 2px solid #ddd;
+    padding-left: 1.5rem;
   }
 
-  div{
-    color: black;
+  .checkbox{
+    display: inline-block;
   }
-  
