@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, ElementRef, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
@@ -8,16 +8,19 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./code-block.component.css'],
   providers: [Clipboard]
 })
-export class CodeBlockComponent implements AfterViewInit {
+export class CodeBlockComponent{
   @Input() code: string = '';
   @Input() language: string = 'html';
 
   constructor(private el: ElementRef, private clipboard: Clipboard) {}
 
-  ngAfterViewInit() {
-    this.setCodeContent();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['code']) {
+      this.setCodeContent();
+    }
   }
 
+  // This function updates the code content in the DOM
   setCodeContent() {
     const codeElement = this.el.nativeElement.querySelector('code');
     if (codeElement) {

@@ -19,12 +19,13 @@ export class TagGeneratorComponent {
 
   constructor(protected metaGenerator :MetaGeneratorService) {}
 
-  ngOnInit():void{this.generateTags=this.metaGenerator.generateMetaTags();}
+  // ngOnInit():void{}
 
   generatedTagsString = signal('');
 
   generatedTags() {
-    this.generatedTagsString.set('');
-    this.generatedTagsString.set(this.generateTags);
-    console.log(this.generateTags)}
+    // this.generatedTagsString.set('');
+    this.generateTags=this.metaGenerator.generateMetaTags();
+    console.log(this.generateTags)
+    this.generatedTagsString.set(this.generateTags);}
 }

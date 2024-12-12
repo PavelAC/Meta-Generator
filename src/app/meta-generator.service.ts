@@ -30,10 +30,9 @@ export class MetaGeneratorService {
 
   generateMetaTags = computed(() => {
     const tags: string[] = [];
-    const formData = this.formData(); // Ensure `formData` is callable (signal or method)
-    const socialLinks = this.socialLinks(); // Ensure `socialLinks` is callable (signal or method)
+    const formData = this.formData();
+    const socialLinks = this.socialLinks();
   
-    // Basic meta tags
     const baseMetaTemplates = [
       { tag: 'title', value: `<title>${formData.title || ''}</title>` },
       { tag: 'viewport', value: `<meta name="viewport" content="width=device-width, initial-scale=1.0">` },
@@ -43,10 +42,8 @@ export class MetaGeneratorService {
       { tag: 'keywords', value: `<meta name="keywords" content="${formData.keywords || ''}">` },
     ];
   
-    // Add base tags
     baseMetaTemplates.forEach(template => tags.push(template.value));
   
-    // Social-specific meta tags
     const socialMetaTemplates: Record<string, { property: string; field: string; template: string }[]> = {
       Facebook: [
         { property: 'og:title', field: 'title', template: `<meta property="og:title" content="{value}">` },
@@ -60,7 +57,6 @@ export class MetaGeneratorService {
       ],
     };
   
-    // Generate tags dynamically for each social platform
     socialLinks.forEach(platform => {
       const templates = socialMetaTemplates[platform.name];
       if (templates) {
@@ -73,7 +69,7 @@ export class MetaGeneratorService {
       }
     });
   
-    return tags.join('\n'); // Return as a single string with line breaks
+    return tags.join('\n'); 
   });
   
 

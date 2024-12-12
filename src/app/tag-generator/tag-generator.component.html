@@ -1,4 +1,6 @@
 <div>
   <button type="button" (click)="generatedTags()">Generate Meta Tags</button>
-  <app-code-block *ngIf="generatedTagsString()" [code]="generatedTagsString()" language="html"></app-code-block>
+  <app-code-block   *ngIf="generatedTagsString()" 
+  [code]="generatedTagsString()" 
+  language="html"></app-code-block>
 </div>
