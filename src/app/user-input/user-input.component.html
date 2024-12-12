@@ -9,7 +9,7 @@
       name="Title"
       type="text"
       placeholder="Title"
-      [value]="formData().title"
+      [value]="formData.title"
       (input)="handleInput($event, 'title')"
     />
   </p>
@@ -25,7 +25,7 @@
       placeholder="Description"
       rows="4"
       cols="30"
-      [value]="formData().description"
+      [value]="formData.description"
       (input)="handleInput($event, 'description')"
     ></textarea>
   </p>
@@ -37,7 +37,7 @@
       placeholder="Keywords"
       rows="4"
       cols="30"
-      [value]="formData().keywords"
+      [value]="formData.keywords"
       (input)="handleInput($event, 'keywords')"
     ></textarea>
   </p>
@@ -50,7 +50,7 @@
       class="user-input__drop-tag"
       id="Charset"
       name="Charset"
-      [value]="formData().charset"
+      [value]="formData.charset"
       (change)="handleInput($event, 'charset')"
     >
       <option value="" disabled>Select Charset</option>
@@ -66,7 +66,7 @@
       name="Author"
       type="text"
       placeholder="Author"
-      [value]="formData().author"
+      [value]="formData.author"
       (input)="handleInput($event, 'author')"
     />
   </p>

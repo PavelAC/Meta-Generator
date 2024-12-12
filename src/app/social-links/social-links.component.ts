@@ -13,21 +13,38 @@ export class SocialLinksComponent {
   @Output() selectedLinks = new EventEmitter<any[]>();
 
   socialPlatforms = signal([
-    { name: 'Twitter', selected: false, fields: { title: '', description: '', image: '' } },
-    { name: 'Facebook', selected: false, fields: { title: '', description: '', image: '' } }
+    {
+      name: 'Facebook',
+      selected: false,
+      fields: {
+        title: '',
+        description: '',
+        image: '',
+      },
+    },
+    {
+      name: 'Twitter',
+      selected: false,
+      fields: {
+        title: '',
+        description: '',
+        image: '',
+      },
+    },
   ]);
 
-  selectedPlatforms = computed(() => this.socialPlatforms().filter(platform => platform.selected));
+ selectedPlatforms = computed(() =>
+  this.socialPlatforms().filter(platform => platform.selected)
+);
 
-  togglePlatform(platformName: string): void {
-    const updatedPlatforms = this.socialPlatforms().map(platform =>
-      platform.name === platformName
-        ? { ...platform, selected: !platform.selected }
-        : platform
-    );
-    this.socialPlatforms.set(updatedPlatforms);
+togglePlatform(platformName: string): void {
+  const updatedPlatforms = this.socialPlatforms().map(platform =>
+    platform.name === platformName
+      ? { ...platform, selected: !platform.selected }
+      : platform
+  );
+  this.socialPlatforms.set(updatedPlatforms);
 
-    // Emit updated platforms
-    this.selectedLinks.emit(this.selectedPlatforms());
-  }
+  this.selectedLinks.emit(this.selectedPlatforms());
+}
 }

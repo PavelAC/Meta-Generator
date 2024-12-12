@@ -10,7 +10,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 })
 export class CodeBlockComponent implements AfterViewInit {
   @Input() code: string = '';
-  @Input() language: string = '';
+  @Input() language: string = 'html';
 
   constructor(private el: ElementRef, private clipboard: Clipboard) {}
 

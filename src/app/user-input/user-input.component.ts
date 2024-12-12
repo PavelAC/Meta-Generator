@@ -3,6 +3,7 @@ import { HeaderComponent } from "../header/header.component";
 import { SocialLinksComponent } from "../social-links/social-links.component";
 import { CommonModule } from '@angular/common';
 import { TagGeneratorComponent } from '../tag-generator/tag-generator.component';
+import { MetaGeneratorService } from '../meta-generator.service';
 
 @Component({
   selector: 'app-user-input',
@@ -12,30 +13,19 @@ import { TagGeneratorComponent } from '../tag-generator/tag-generator.component'
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  formData = signal({
-    title: '',
-    description: '',
-    keywords: '',
-    charset: '',
-    author: ''
-  });
 
-  socialLinks = signal<any[]>([]);
+  constructor(protected metaGenerator :MetaGeneratorService) {}
 
-  // Handle input changes dynamically
-  updateFormField(field: string, value: string): void {
-    this.formData.set({
-      ...this.formData(),
-      [field]: value
-    });
-  }
+ get formData() {return this.metaGenerator.getFormData();}
+ get socialLinks() {return this.metaGenerator.getSocialLinks()};
 
   handleInput(event: Event, field: string): void {
-    const target = event.target as HTMLInputElement; // Type assertion here
-    const value = target.value;
-    this.updateFormField(field, value);
+    const target = event.target as HTMLInputElement;
+    this.metaGenerator.updateFormData(field, target.value);
   }
+
   updateSocialLinks(updatedLinks: any[]): void {
-    this.socialLinks.set(updatedLinks);
+    this.metaGenerator.updateSocialLinks(updatedLinks);
   }
+
 }
