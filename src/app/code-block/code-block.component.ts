@@ -8,27 +8,39 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./code-block.component.css'],
   providers: [Clipboard]
 })
-export class CodeBlockComponent{
-  @Input() code: string = '';
-  @Input() language: string = 'html';
+export class CodeBlockComponent implements OnChanges {
+  @Input() code!: string; // The code content to display
+  @Input() language: string = 'html'; // The language for syntax highlighting (default: HTML)
 
-  constructor(private el: ElementRef, private clipboard: Clipboard) {}
+  constructor(
+    private el: ElementRef,
+    private clipboard: Clipboard
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['code']) {
-      this.setCodeContent();
+      this.updateCodeContent();
     }
   }
 
-  // This function updates the code content in the DOM
-  setCodeContent() {
+  private updateCodeContent() {
     const codeElement = this.el.nativeElement.querySelector('code');
     if (codeElement) {
-      codeElement.textContent = this.code;
+      codeElement.textContent = this.code; // Set the code content
     }
   }
+
+  // copyCode() {
+  //   const codeToCopy = this.generatedTagsString();
+  //   if (codeToCopy) {
+  //     this.clipboard.copy(codeToCopy);
+  //     console.log('Code copied to clipboard!');
+  //   } else {
+  //     console.warn('No code available to copy.');
+  //   }
+  // }
 
   copyCode() {
     this.clipboard.copy(this.code);
-  }
+  } 
 }

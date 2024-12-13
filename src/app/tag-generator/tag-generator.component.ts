@@ -1,7 +1,8 @@
-import { Component, Input, computed, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CodeBlockComponent } from '../code-block/code-block.component';
 import { MetaGeneratorService } from '../meta-generator.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-tag-generator',
@@ -11,21 +12,19 @@ import { MetaGeneratorService } from '../meta-generator.service';
   styleUrls: ['./tag-generator.component.css']
 })
 export class TagGeneratorComponent {
-
-  generateTags!:string;
-
   @Input() formData!: any;
   @Input() socialLinks!: any[];
 
-  constructor(protected metaGenerator :MetaGeneratorService) {}
+  generatedTagsString = signal(''); 
 
-  // ngOnInit():void{}
+  constructor(
+    protected metaGenerator: MetaGeneratorService,
+    private clipboard: Clipboard
+  ) {}
 
-  generatedTagsString = signal('');
-
-  generatedTags() {
-    // this.generatedTagsString.set('');
-    this.generateTags=this.metaGenerator.generateMetaTags();
-    console.log(this.generateTags)
-    this.generatedTagsString.set(this.generateTags);}
+  generateTags() {
+    const generated = this.metaGenerator.generateMetaTags();
+    console.log(generated);
+    this.generatedTagsString.set(generated); // Update the signal
+  }
 }

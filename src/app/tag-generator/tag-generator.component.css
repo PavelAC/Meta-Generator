@@ -11,3 +11,33 @@ div{
     flex-wrap: wrap;
     width: 46rem;
 }
+button {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(25deg, #1e90ff, #99badd);
+    background-size: 300% 300%; /* Make the gradient larger to allow movement */
+    color: white;
+    border-radius: 0.31rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-in;
+    border: none;
+    background-position: 0% 50%; /* Initial position */
+    margin: 1.5rem auto;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    animation: gradient-shift 1.5s infinite alternate; /* Smooth looping animation */
+  }
+  
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  
+    /* transform: translateY(-3px); */
+  
